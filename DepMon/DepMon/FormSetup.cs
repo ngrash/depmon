@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
-using DepMon.ProviderManagement;
 using DepMon.Core;
+using DepMon.Provider;
 
 namespace DepMon
 {
-    public partial class Form1 : Form
+    public partial class FormSetup : Form
     {
         private IProvider _selectedProvider = null;
 
@@ -37,13 +37,13 @@ namespace DepMon
 
             public override string ToString()
             {
-                return base.ToString();
+                return string.Format("{0} - {1}", Line.Name, Line.Destination.Name);
             }
         }
 
         #endregion
 
-        public Form1()
+        public FormSetup()
         {
             InitializeComponent();
         }
@@ -113,7 +113,7 @@ namespace DepMon
             var lines = _selectedProvider.StationService.GetLines(selectedStation);
             foreach (ILine line in lines)
             {
-                listBoxStations.Items.Add(new LineItem() { Line = line });
+                listBoxLines.Items.Add(new LineItem() { Line = line });
             }
         }
 

@@ -1,6 +1,6 @@
 ﻿namespace DepMon
 {
-    partial class Form1
+    partial class FormSetup
     {
         /// <summary>
         /// Required designer variable.

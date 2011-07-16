@@ -1,4 +1,4 @@
-﻿namespace DepMon.Core
+﻿namespace DepMon.Provider
 {
     public interface IProvider
     {

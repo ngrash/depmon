@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using DepMon.Core;
+using DepMon.Provider;
 
 namespace DepMon
 {
