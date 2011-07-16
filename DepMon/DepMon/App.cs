@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using DepMon.ProviderManagement;
-using System.IO;
+﻿using System.IO;
 using System.Reflection;
+using System.Windows.Forms;
+using DepMon.Settings;
+using DepMon.Core;
 
 namespace DepMon
 {
@@ -28,7 +25,12 @@ namespace DepMon
 
         public void Run()
         {
-            Application.Run(new Form1());
+            IAppSettings settings = new UserSettings();
+
+            if (!settings.Exist())
+            {
+                Application.Run(new FormSetup());
+            }
         }
     }
 }

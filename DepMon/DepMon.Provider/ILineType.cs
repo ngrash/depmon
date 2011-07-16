@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DepMon.Core
+namespace DepMon.Provider
 {
-    public interface ILine
+    public interface ILineType
     {
         string Name { get; }
-        ILineType Type { get; }
-        IDestination Destination { get; }
     }
 }

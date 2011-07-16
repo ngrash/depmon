@@ -47,19 +47,19 @@
     <Compile Include="DepartureControl.Designer.cs">
       <DependentUpon>DepartureControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormSetup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormSetup.Designer.cs">
+      <DependentUpon>FormSetup.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DepartureControl.resx">
       <DependentUpon>DepartureControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FormSetup.resx">
+      <DependentUpon>FormSetup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -85,9 +85,9 @@
       <Project>{D25659C4-776B-44DE-B458-5FF23667F6CA}</Project>
       <Name>DepMon.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DepMon.ProviderManagement\DepMon.ProviderManagement.csproj">
-      <Project>{1013099A-97E2-4AC0-B4C4-41F7B3AAFD05}</Project>
-      <Name>DepMon.ProviderManagement</Name>
+    <ProjectReference Include="..\DepMon.Provider\DepMon.Provider.csproj">
+      <Project>{77CA633A-B5EC-4555-BE54-D998257FC654}</Project>
+      <Name>DepMon.Provider</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
