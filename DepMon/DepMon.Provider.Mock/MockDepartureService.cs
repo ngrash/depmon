@@ -5,12 +5,16 @@ namespace DepMon.Provider.Mock
 {
     class MockDepartureService : IDepartureService
     {
-        public IDeparture GetNextDeparture(ILine line, IStation station)
+        public IDepartureQuery CreateQuery(ILine line, IStation station)
         {
-            throw new NotImplementedException();
+            return new MockDepartureQuery()
+            {
+                Line = line.Name,
+                Station = station.Name
+            };
         }
 
-        public IEnumerable<IDeparture> GetNextDepartures(ILine line, IStation station, int count)
+        public IDeparture QueryNextDeparture(IDepartureQuery query)
         {
             throw new NotImplementedException();
         }

@@ -1,12 +1,16 @@
-﻿
+﻿using System;
+
 namespace DepMon.Provider.Mock
 {
     public class MockProvider : IProvider
     {
-        public MockProvider()
+        public Guid UniqueID {
+            get { return new Guid("48196e1b-6474-4306-abb8-a01f5ff25634"); }
+        }
+
+        public Type DepartureQueryType
         {
-            StationService = new MockStationService();
-            DepartureService = new MockDepartureService();
+            get { return typeof(MockDepartureQuery); }
         }
 
         public string Name
@@ -24,6 +28,12 @@ namespace DepMon.Provider.Mock
         {
             get;
             private set;
+        }
+
+        public MockProvider()
+        {
+            StationService = new MockStationService();
+            DepartureService = new MockDepartureService();
         }
     }
 }

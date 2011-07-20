@@ -7,7 +7,7 @@ namespace DepMon.Core
 {
     public static class ProviderManager
     {
-        private static List<IProvider> _knownProviders = new List<IProvider>();
+        private static Dictionary<Guid, IProvider> _knownProviders = new Dictionary<Guid, IProvider>();
 
         public static void AddProviderAssembly(string file)
         {
@@ -25,7 +25,7 @@ namespace DepMon.Core
                 {
                     containsProvider = true;
 
-                    // public default constructor
+                    // find and invoke public default constructor
                     ConstructorInfo constructor = type.GetConstructor(Type.EmptyTypes);
                     IProvider provider = (IProvider)constructor.Invoke(null);
                     AddProvider(provider);
@@ -38,15 +38,20 @@ namespace DepMon.Core
 
         public static void AddProvider(IProvider provider)
         {
-            if (_knownProviders.Contains(provider))
+            if(_knownProviders.ContainsKey(provider.UniqueID))
                 throw new ArgumentException();
 
-            _knownProviders.Add(provider);
+            _knownProviders.Add(provider.UniqueID, provider);
+        }
+
+        public static IProvider GetProviderByID(Guid uniqueID)
+        {
+            return _knownProviders[uniqueID];
         }
 
         public static ICollection<IProvider> ListAllKnownProviders()
         {
-            return _knownProviders;
+            return _knownProviders.Values;
         }
     }
 }

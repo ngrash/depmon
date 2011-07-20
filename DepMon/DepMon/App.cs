@@ -1,8 +1,11 @@
 ﻿using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-using DepMon.Settings;
+using System.Linq;
 using DepMon.Core;
+using DepMon.Core.Settings;
+using DepMon.Provider;
+using System.Collections.Generic;
 
 namespace DepMon
 {
@@ -25,12 +28,35 @@ namespace DepMon
 
         public void Run()
         {
-            IAppSettings settings = new UserSettings();
+            DepartureQueryRepository queryRepository = new DepartureQueryRepository();
+            Dictionary<IProvider, List<IDepartureQuery>> providerQueries = new Dictionary<IProvider, List<IDepartureQuery>>();
+            bool hasQueries = false;
+            foreach(IProvider provider in ProviderManager.ListAllKnownProviders()) {
+                providerQueries.Add(provider, new List<IDepartureQuery>());
 
-            if (!settings.Exist())
-            {
-                Application.Run(new FormSetup());
+                foreach (IDepartureQuery query in queryRepository.ListAll(provider))
+                {
+                    hasQueries = true;
+                    providerQueries[provider].Add(query);
+                }
             }
+
+            if (!hasQueries)
+            {
+                AddNewForm addForm = new AddNewForm();
+                addForm.ShowDialog();
+
+                if (addForm.DepartureQuery != null)
+                {
+                    queryRepository.Add(addForm.DepartureQuery, addForm.SelectedProvider);
+                }
+            }
+
+            AppIcon icon = new AppIcon();
+            icon.Exit += (s, e) => Application.Exit();
+            icon.Show();
+
+            Application.Run();
         }
     }
 }

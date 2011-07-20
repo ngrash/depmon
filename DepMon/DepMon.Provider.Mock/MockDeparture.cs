@@ -6,12 +6,20 @@ namespace DepMon.Provider.Mock
     {
         public DateTime DepartureTime
         {
-            get { throw new NotImplementedException(); }
+            get;
+            set;
+        }
+
+        public IStation Station
+        {
+            get;
+            set;
         }
 
         public ILine Line
         {
-            get { throw new NotImplementedException(); }
+            get;
+            set;
         }
     }
 }

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IDeparture.cs" />
+    <Compile Include="IDepartureQuery.cs" />
     <Compile Include="IDepartureService.cs" />
     <Compile Include="IDestination.cs" />
     <Compile Include="ILine.cs" />
