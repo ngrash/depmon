@@ -20,20 +20,12 @@ namespace DepMon.Provider.Mock
 
         public IStationService StationService
         {
-            get;
-            private set;
+            get { return ServiceRegister.StationService; }
         }
 
         public IDepartureService DepartureService
         {
-            get;
-            private set;
-        }
-
-        public MockProvider()
-        {
-            StationService = new MockStationService();
-            DepartureService = new MockDepartureService();
+            get { return ServiceRegister.DepartureService; }
         }
     }
 }
