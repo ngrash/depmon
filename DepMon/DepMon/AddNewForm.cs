@@ -5,9 +5,20 @@ using DepMon.Provider;
 
 namespace DepMon
 {
-    public partial class FormSetup : Form
+    public partial class AddNewForm : Form
     {
         private IProvider _selectedProvider = null;
+
+        public IDepartureQuery DepartureQuery
+        {
+            get;
+            private set;
+        }
+
+        public IProvider SelectedProvider
+        {
+            get { return _selectedProvider; }
+        }
 
         #region private view models
 
@@ -43,7 +54,7 @@ namespace DepMon
 
         #endregion
 
-        public FormSetup()
+        public AddNewForm()
         {
             InitializeComponent();
         }
@@ -53,6 +64,9 @@ namespace DepMon
             listBoxLines.Items.Clear();
             listBoxStations.Items.Clear();
             textBoxStation.Text = string.Empty;
+            _selectedProvider = null;
+
+            buttonSelect.Enabled = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -107,6 +121,12 @@ namespace DepMon
         private void listBoxStations_SelectedIndexChanged(object sender, EventArgs e)
         {
             StationItem selectedStationItem = (StationItem)listBoxStations.SelectedItem;
+            if (selectedStationItem == null)
+            {
+                listBoxLines.Items.Clear();
+                return;
+            }
+
             IStation selectedStation = selectedStationItem.Station;
 
             listBoxLines.Items.Clear();
@@ -117,9 +137,31 @@ namespace DepMon
             }
         }
 
+        private void listBoxLines_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            buttonSelect.Enabled = listBoxLines.SelectedItem is LineItem;
+        }
+
         private void buttonSelect_Click(object sender, EventArgs e)
         {
+            LineItem selectedLineItem = listBoxLines.SelectedItem as LineItem;
 
+            if(selectedLineItem == null) {
+                MessageBox.Show("Select a line first.");
+                return;
+            }
+
+            StationItem selectedStationItem = listBoxStations.SelectedItem as StationItem;
+            if (selectedStationItem == null)
+            {
+                MessageBox.Show("Select a station first.");
+                return;
+            }
+
+            IDepartureQuery query = _selectedProvider.DepartureService.CreateQuery(selectedLineItem.Line, selectedStationItem.Station);
+            DepartureQuery = query;
+
+            Close();
         }
     }
 }

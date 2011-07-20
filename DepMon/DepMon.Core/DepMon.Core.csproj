@@ -38,10 +38,12 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProviderManager.cs" />
-    <Compile Include="Settings\IAppSettings.cs" />
-    <Compile Include="Settings\ProviderItem.cs" />
-    <Compile Include="Settings\StationItem.cs" />
-    <Compile Include="Settings\UserSettings.cs" />
+    <Compile Include="Settings\AppSettings.cs" />
+    <Compile Include="Settings\ProviderInfo.cs" />
+    <Compile Include="Settings\DepartureQueryInfo.cs" />
+    <Compile Include="Settings\ISettingsStore.cs" />
+    <Compile Include="DepartureQueryRepository.cs" />
+    <Compile Include="Settings\UserSettingsStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DepMon.Provider\DepMon.Provider.csproj">

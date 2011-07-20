@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace DepMon.Settings
+namespace DepMon.Provider
 {
-    public class ProviderItem
+    public interface IDepartureQuery
     {
-        [XmlAttribute("name")]
-        public string Name { get; set; }
+        
     }
 }

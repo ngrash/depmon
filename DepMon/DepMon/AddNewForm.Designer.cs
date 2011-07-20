@@ -1,6 +1,6 @@
 ﻿namespace DepMon
 {
-    partial class FormSetup
+    partial class AddNewForm
     {
         /// <summary>
         /// Required designer variable.
@@ -118,6 +118,7 @@
             this.listBoxLines.Name = "listBoxLines";
             this.listBoxLines.Size = new System.Drawing.Size(188, 56);
             this.listBoxLines.TabIndex = 0;
+            this.listBoxLines.SelectedIndexChanged += new System.EventHandler(this.listBoxLines_SelectedIndexChanged);
             // 
             // buttonSelect
             // 
@@ -129,7 +130,7 @@
             this.buttonSelect.UseVisualStyleBackColor = true;
             this.buttonSelect.Click += new System.EventHandler(this.buttonSelect_Click);
             // 
-            // Form1
+            // AddNewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -141,8 +142,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Form1";
-            this.Text = "Setup";
+            this.Name = "AddNewForm";
+            this.Text = "Add new";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBoxProvider.ResumeLayout(false);
             this.groupBoxStation.ResumeLayout(false);

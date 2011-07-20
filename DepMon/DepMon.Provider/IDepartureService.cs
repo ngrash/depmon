@@ -7,7 +7,7 @@ namespace DepMon.Provider
 {
     public interface IDepartureService
     {
-        IDeparture GetNextDeparture(ILine line, IStation station);
-        IEnumerable<IDeparture> GetNextDepartures(ILine line, IStation station, int count);
+        IDepartureQuery CreateQuery(ILine line, IStation station);
+        IDeparture QueryNextDeparture(IDepartureQuery query);
     }
 }

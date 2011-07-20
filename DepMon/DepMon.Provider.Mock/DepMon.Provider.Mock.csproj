@@ -35,6 +35,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MockDepartureQuery.cs" />
     <Compile Include="MockDepartureService.cs" />
     <Compile Include="LineTypes\Foo.cs" />
     <Compile Include="LineTypes\Bar.cs" />
@@ -50,6 +51,7 @@
     <ProjectReference Include="..\DepMon.Provider\DepMon.Provider.csproj">
       <Project>{77CA633A-B5EC-4555-BE54-D998257FC654}</Project>
       <Name>DepMon.Provider</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

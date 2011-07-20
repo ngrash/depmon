@@ -8,6 +8,7 @@ namespace DepMon.Provider
     public interface IDeparture
     {
         DateTime DepartureTime { get; }
+        IStation Station { get; }
         ILine Line { get; }
     }
 }
