@@ -13,7 +13,7 @@ namespace DepMon.Provider.Mock
             { new MockStation() { Name = "bar" }, new List<MockLine>() {
                 new MockLine() { Name = "1", Type = new LineTypes.Foo(), Destination = new MockDestination() { Name = "Fizz" } },
                 new MockLine() { Name = "2", Type = new LineTypes.Bar(), Destination = new MockDestination() { Name = "Buzz" } },
-                new MockLine() { Name = "3", Type = new LineTypes.Foo(), Destination = new MockDestination() { } },
+                new MockLine() { Name = "3", Type = new LineTypes.Foo(), Destination = new MockDestination() { Name = "FizzBuzz" } },
             } },
             { new MockStation() { Name = "baz" }, new List<MockLine>() {
                 new MockLine() { Name = "1", Type = new LineTypes.Foo(), Destination = new MockDestination() { Name = "Fizz" } },
